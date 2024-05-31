@@ -11,9 +11,19 @@ $games = [
         ["title" => "The Forest", "description" => "A survival horror game set in an open world forest environment.", "image" => "theforest.jpg"],
     ],
     "strategy" => [
-        ["title" => "Game C1", "description" => "Strategy Game 1", "image" => "strategy1.jpg"],
-        ["title" => "Game C2", "description" => "Strategy Game 2", "image" => "strategy2.jpg"],
-        ["title" => "Game C3", "description" => "Strategy Game 3", "image" => "strategy3.jpg"],
+        ["title" => "Persona 3 Reload", "description" => "A modern remaster of the beloved RPG classic with enhanced graphics and gameplay.", "image" => "persona3reload.jpg"],
+        ["title" => "Civilization VI", "description" => "Sid Meier's Civilization VI is a turn-based strategy 4X video game developed by Firaxis Games and published by 2K. The mobile and Nintendo Switch port was published by Aspyr Media.", "image" => "civilization6.jpg"],
+        ["title" => "Hearts of Iron IV", "description" => "A grand strategy war game developed by Paradox Development Studio and published by Paradox Interactive.", "image" => "heartsofiron4.jpg"],
+    ],
+    "horror" => [
+        ["title" => "Resident Evil Village", "description" => "Experience survival horror like never before in the eighth major installment in the Resident Evil franchise.", "image" => "residentevilvillage.jpg"],
+        ["title" => "Outlast", "description" => "A first-person survival horror series in which investigative journalist Miles Upshur explores Mount Massive Asylum.", "image" => "outlast.jpg"],
+        ["title" => "Silent Hill 2", "description" => "James Sunderland searches for his deceased wife in the eerie town of Silent Hill.", "image" => "silenthill2.jpg"],
+    ],
+    "open world" => [
+        ["title" => "The Witcher 3: Wild Hunt", "description" => "An open world RPG where you play as Geralt of Rivia, a monster hunter for hire.", "image" => "witcher3.jpg"],
+        ["title" => "Assassin's Creed Odyssey", "description" => "An action RPG set in ancient Greece, where you become a legendary Spartan hero.", "image" => "acodyssey.jpg"],
+        ["title" => "Horizon Zero Dawn", "description" => "A post-apocalyptic open world game where you hunt robotic creatures.", "image" => "horizonzerodawn.jpg"],
     ],
 ];
 
@@ -32,11 +42,21 @@ $genre = $_GET['genre'] ?? '';
     <header>
         <h1>Game Store</h1>
         <div class="auth-links">
+            <a href="index.html">Homepage</a>
             <a href="login.html">Login</a>
             <a href="register.html">Register</a>
         </div>
     </header>
     <main>
+        <nav>
+            <ul>
+                <li><a href="games.php?genre=action">Action</a></li>
+                <li><a href="games.php?genre=adventure">Adventure</a></li>
+                <li><a href="games.php?genre=strategy">Strategy</a></li>
+                <li><a href="games.php?genre=horror">Horror</a></li>
+                <li><a href="games.php?genre=open+world">Open World</a></li>
+            </ul>
+        </nav>
         <section id="genres">
             <h2><?= ucfirst(htmlspecialchars($genre)) ?> Games</h2>
             <?php if (array_key_exists($genre, $games)): ?>
@@ -54,5 +74,8 @@ $genre = $_GET['genre'] ?? '';
             <?php endif; ?>
         </section>
     </main>
+    <footer>
+        <p>&copy; 2024 Steam Type Store. All rights reserved.</p>
+    </footer>
 </body>
 </html>
