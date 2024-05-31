@@ -1,19 +1,10 @@
 <?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $_POST['username'] ?? '';
+    $password = $_POST['password'] ?? '';
 
-// Retrieve the form data
-$username = $_POST['username'];
-$password = $_POST['password'];
+    // Perform actual registration logic
 
-// Register the user
-if (register_user($username, $password)) {
-    header("Location: index.html");
-} else {
-    header("Location: register.html?error=1");
-}
-exit();
-
-function register_user($username, $password) {
-    // Add code to register the user
-    return true; // or false based on registration result
+    echo "Registered as $username";
 }
 ?>
