@@ -11,9 +11,9 @@ $games = [
         ["title" => "The Forest", "description" => "A survival horror game set in an open world forest environment.", "image" => "theforest.jpg"],
     ],
     "strategy" => [
-        ["title" => "Game C1", "description" => "Strategy Game 1", "image" => "pic1.jpg"],
-        ["title" => "Game C2", "description" => "Strategy Game 2", "image" => "pic2.jpg"],
-        ["title" => "Game C3", "description" => "Strategy Game 3", "image" => "pic3.jpg"],
+        ["title" => "Game C1", "description" => "Strategy Game 1", "image" => "strategy1.jpg"],
+        ["title" => "Game C2", "description" => "Strategy Game 2", "image" => "strategy2.jpg"],
+        ["title" => "Game C3", "description" => "Strategy Game 3", "image" => "strategy3.jpg"],
     ],
 ];
 
@@ -25,7 +25,7 @@ $genre = $_GET['genre'] ?? '';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= ucfirst(htmlspecialchars($genre)) ?>Games</title>
+    <title><?= ucfirst(htmlspecialchars($genre)) ?> Games</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
