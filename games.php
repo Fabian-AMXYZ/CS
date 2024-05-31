@@ -1,33 +1,50 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['username'])) {
+    header('Location: login.php');
+    exit;
+}
+
 $games = [
     "action" => [
-        ["title" => "Grand Theft Auto V", "description" => "An action-adventure game set in the open world of Los Santos.", "image" => "gta5.jpg"],
-        ["title" => "Tom Clancy's Rainbow Six® Siege", "description" => "A tactical shooter game focusing on teamwork and strategy.", "image" => "rainbow6siege.jpg"],
-        ["title" => "Red Dead Redemption 2", "description" => "An epic tale of life in America at the dawn of the modern age.", "image" => "rdr2.jpg"],
+        ["title" => "Grand Theft Auto V", "description" => "An action-adventure game set in the open world of Los Santos.", "price" => 29.99, "image" => "gtaa.jpg"],
+        ["title" => "Tom Clancy's Rainbow Six® Siege", "description" => "A tactical shooter game focusing on teamwork and strategy.", "price" => 19.99, "image" => "seige.jpg"],
+        ["title" => "Red Dead Redemption 2", "description" => "An epic tale of life in America at the dawn of the modern age.", "price" => 39.99, "image" => "rdr22.jpg"],
     ],
     "adventure" => [
-        ["title" => "Terraria", "description" => "An adventure game featuring exploration, crafting, building, and combat.", "image" => "terraria.jpg"],
-        ["title" => "Baldur's Gate 3", "description" => "A role-playing game set in the Dungeons & Dragons universe.", "image" => "baldursgate3.jpg"],
-        ["title" => "The Forest", "description" => "A survival horror game set in an open world forest environment.", "image" => "theforest.jpg"],
+        ["title" => "Terraria", "description" => "An adventure game featuring exploration, crafting, building, and combat.", "price" => 9.99, "image" => "teraaa.jpg"],
+        ["title" => "Baldur's Gate 3", "description" => "A role-playing game set in the Dungeons & Dragons universe.", "price" => 59.99, "image" => "baldur.jpg"],
+        ["title" => "The Forest", "description" => "A survival horror game set in an open world forest environment.", "price" => 14.99, "image" => "forest.jpg"],
     ],
     "strategy" => [
-        ["title" => "Persona 3 Reload", "description" => "A modern remaster of the beloved RPG classic with enhanced graphics and gameplay.", "image" => "persona3reload.jpg"],
-        ["title" => "Civilization VI", "description" => "Sid Meier's Civilization VI is a turn-based strategy 4X video game developed by Firaxis Games and published by 2K. The mobile and Nintendo Switch port was published by Aspyr Media.", "image" => "civilization6.jpg"],
-        ["title" => "Hearts of Iron IV", "description" => "A grand strategy war game developed by Paradox Development Studio and published by Paradox Interactive.", "image" => "heartsofiron4.jpg"],
+        ["title" => "Persona 3 Reload", "description" => "A modern remaster of the beloved RPG classic with enhanced graphics and gameplay.", "price" => 49.99, "image" => "persona3.jpg"],
+        ["title" => "Civilization VI", "description" => "Sid Meier's Civilization VI is a turn-based strategy 4X video game developed by Firaxis Games and published by 2K. The mobile and Nintendo Switch port was published by Aspyr Media.", "price" => 29.99, "image" => "civi.jpg"],
+        ["title" => "Hearts of Iron IV", "description" => "A grand strategy wargame that lets you control any nation in World War II.", "price" => 39.99, "image" => "hoi4.jpg"],
     ],
     "horror" => [
-        ["title" => "Resident Evil Village", "description" => "Experience survival horror like never before in the eighth major installment in the Resident Evil franchise.", "image" => "residentevilvillage.jpg"],
-        ["title" => "Outlast", "description" => "A first-person survival horror series in which investigative journalist Miles Upshur explores Mount Massive Asylum.", "image" => "outlast.jpg"],
-        ["title" => "Silent Hill 2", "description" => "James Sunderland searches for his deceased wife in the eerie town of Silent Hill.", "image" => "silenthill2.jpg"],
+        ["title" => "Resident Evil Village", "description" => "A survival horror game with intense action and an intricate story.", "price" => 39.99, "image" => "residentevilvillage.jpg"],
+        ["title" => "Outlast 2", "description" => "A first-person survival horror game that takes you on a terrifying journey.", "price" => 29.99, "image" => "outlast2.jpg"],
+        ["title" => "Silent Hill 2", "description" => "A psychological horror game that will keep you on the edge of your seat.", "price" => 19.99, "image" => "silenthill2.png"],
     ],
     "open world" => [
-        ["title" => "The Witcher 3: Wild Hunt", "description" => "An open world RPG where you play as Geralt of Rivia, a monster hunter for hire.", "image" => "witcher3.jpg"],
-        ["title" => "Assassin's Creed Odyssey", "description" => "An action RPG set in ancient Greece, where you become a legendary Spartan hero.", "image" => "acodyssey.jpg"],
-        ["title" => "Horizon Zero Dawn", "description" => "A post-apocalyptic open world game where you hunt robotic creatures.", "image" => "horizonzerodawn.jpg"],
+        ["title" => "The Witcher 3: Wild Hunt", "description" => "An open world RPG where you play as Geralt of Rivia, a monster hunter for hire.", "price" => 39.99, "image" => "witch.jpg"],
+        ["title" => "Assassin's Creed Odyssey", "description" => "An action RPG set in ancient Greece, where you become a legendary Spartan hero.", "price" => 29.99, "image" => "acodyssey.jpg"],
+        ["title" => "Horizon Zero Dawn", "description" => "A post-apocalyptic open world game where you hunt robotic creatures.", "price" => 49.99, "image" => "horizonzerodawn.jpg"],
     ],
 ];
 
 $genre = $_GET['genre'] ?? '';
+$username = $_SESSION['username'];
+$users = json_decode(file_get_contents('users.json'), true);
+
+$purchased_games = [];
+foreach ($users as $user) {
+    if ($user['username'] === $username && isset($user['library'])) {
+        $purchased_games = $user['library'];
+        break;
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -42,9 +59,15 @@ $genre = $_GET['genre'] ?? '';
     <header>
         <h1>Game Store</h1>
         <div class="auth-links">
-            <a href="index.html">Homepage</a>
-            <a href="login.html">Login</a>
-            <a href="register.html">Register</a>
+            <a href="index.php">Homepage</a>
+            <a href="library.php">Library</a>
+            <?php if (isset($_SESSION['username'])): ?>
+                <span>Welcome, <?= htmlspecialchars($_SESSION['username']) ?>!</span>
+                <a href="logout.php">Logout</a>
+            <?php else: ?>
+                <a href="login.php">Login</a>
+                <a href="register.php">Register</a>
+            <?php endif; ?>
         </div>
     </header>
     <main>
@@ -57,25 +80,40 @@ $genre = $_GET['genre'] ?? '';
                 <li><a href="games.php?genre=open+world">Open World</a></li>
             </ul>
         </nav>
-        <section id="genres">
-            <h2><?= ucfirst(htmlspecialchars($genre)) ?> Games</h2>
-            <?php if (array_key_exists($genre, $games)): ?>
-                <div id="games">
-                    <?php foreach ($games[$genre] as $game): ?>
-                        <div class="game">
-                            <img src="images/<?= htmlspecialchars($game['image']) ?>" alt="<?= htmlspecialchars($game['title']) ?>">
-                            <h3><?= htmlspecialchars($game['title']) ?></h3>
-                            <p><?= htmlspecialchars($game['description']) ?></p>
-                        </div>
-                    <?php endforeach; ?>
+       <section id="genres">
+    <h2><?= ucfirst(htmlspecialchars($genre)) ?> Games</h2>
+    <?php if (array_key_exists($genre, $games)): ?>
+        <div id="games">
+            <?php foreach ($games[$genre] as $game): ?>
+                <div class="game">
+                    <img src="<?= htmlspecialchars($game['image']) ?>" alt="<?= htmlspecialchars($game['title']) ?>">
+                    <h3><?= htmlspecialchars($game['title']) ?></h3>
+                    <p><?= htmlspecialchars($game['description']) ?></p>
+                    <p>Price: $<?= number_format($game['price'], 2) ?></p>
+                    <?php if (in_array($game, $purchased_games)): ?>
+                        <p class="owned">Already Owned</p>
+                    <?php else: ?>
+                        <form action="cart.php" method="post">
+                            <input type="hidden" name="title" value="<?= htmlspecialchars($game['title']) ?>">
+                            <input type="hidden" name="price" value="<?= htmlspecialchars($game['price']) ?>">
+                            <button type="submit">Add to Cart</button>
+                        </form>
+                    <?php endif; ?>
                 </div>
-            <?php else: ?>
-                <p>Genre not found.</p>
-            <?php endif; ?>
-        </section>
+            <?php endforeach; ?>
+        </div>
+    <?php else: ?>
+        <p>Genre not found.</p>
+    <?php endif; ?>
+</section>
+
     </main>
     <footer>
-        <p>&copy; 2024 Steam Type Store. All rights reserved.</p>
+        <p>&copy; 2024 Digital Codex. All rights reserved.</p>
     </footer>
 </body>
 </html>
+
+
+
+
