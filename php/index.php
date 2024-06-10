@@ -14,12 +14,26 @@ session_start();
     <header>
         <h1>Digital Codex</h1>
         <div class="auth-links">
+            <?php if (isset($_SESSION['username'])): {
+                $username = $_SESSION['username'];
+
+                $sql = "SELECT * FROM users WHERE username = '$username'";
+                $result = mysqli_query($conn, $sql);
+
+                if ($result) {
+                    $row = mysqli_fetch_assoc($result);
+                    $username = $row['username'];
+                }
+            } 
+            ?>
                 <a href="index.php">Homepage</a>
                 <a href="library.php">Library</a>
-                <span>Welcome, ?>!</span>
+                <span>Welcome, <?php echo ($username)?>!</span>
                 <a href="logout.php" class="btn btn-warning">Logout</a>
+            <?php else: ?>
                 <a href="login.php">Login</a>
                 <a href="register.php">Register</a>
+            <?php endif; ?>
         </div>
     </header>
     <main>
