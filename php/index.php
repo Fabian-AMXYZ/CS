@@ -44,31 +44,31 @@ session_start();
         <div class="slides">
             <div class="slide first">
             <a href="games.php?genre=action">
-                    <img src="rdr22.jpg" alt="Action Image">
+                    <img src="/CS/img/action/rdr22.jpg" alt="Action Image">
                     <h1>Action</h1>
                 </a>
             </div>
             <div class="slide">
             <a href="games.php?genre=adventure">
-                    <img src="teraa.jpg" alt="Adventure Image">
+                    <img src="/CS/img/adventure/teraa.jpg" alt="Adventure Image">
                     <h1>Adventure</h1>
                 </a>
             </div>
             <div class="slide">
                 <a href="games.php?genre=strategy">
-                    <img src="civ.jpg" alt="Strategy Image">
+                    <img src="/CS/img/strategy/civ.jpg" alt="Strategy Image">
                     <h1>Strategy</h1>
                 </a>
             </div>
             <div class="slide">
                 <a href="games.php?genre=horror">
-                    <img src="out.jpg" alt="Horror Image">
+                    <img src="/CS/img/horror/out.jpg" alt="Horror Image">
                     <h1>Horror</h1>
                 </a>
             </div>
             <div class="slide">
             <a href="games.php?genre=open+world">
-                    <img src="witchh.jpg" alt="Open World Image">
+                    <img src="/CS/img/open world/witchh.jpg" alt="Open World Image">
                     <h1>Action</h1>
                 </a>
             </div>
