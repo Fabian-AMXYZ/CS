@@ -14,7 +14,6 @@ session_start();
         <h1>Digital Codex</h1>
         <div class="auth-links">
             <a href="index.php">Homepage</a>
-            <a href="login.php">Login</a>
         </div>
     </header>
 <body>
@@ -46,7 +45,7 @@ session_start();
             }
             
             require_once "database.php";
-            $sql ="SELECT * FROM users WHERE email = '$email'" OR "SELECT * FROM users username = '$username'";
+            $sql ="SELECT * FROM users WHERE email = '$email'" OR "SELECT * FROM users WHERE username = '$username'";
             $result = mysqli_query($conn, $sql);
             $rowCount = mysqli_num_rows($result);
             if ($rowCount>0) {
@@ -98,6 +97,7 @@ session_start();
         </div>
             <input type="submit" class="input-btn" value="Register" id="register" name="submit">
         </form>
+        <div><p>Already registered? <a href="login.php">Login here</a></p></div>
         </div>
     </main>
     <footer>

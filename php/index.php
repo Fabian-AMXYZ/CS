@@ -14,15 +14,12 @@ session_start();
     <header>
         <h1>Digital Codex</h1>
         <div class="auth-links">
-            <?php if (isset($_SESSION['username'])): ?>
                 <a href="index.php">Homepage</a>
                 <a href="library.php">Library</a>
-                <span>Welcome, <?= htmlspecialchars($_SESSION['username']) ?>!</span>
-                <a href="logout.php">Logout</a>
-            <?php else: ?>
+                <span>Welcome, ?>!</span>
+                <a href="logout.php" class="btn btn-warning">Logout</a>
                 <a href="login.php">Login</a>
                 <a href="register.php">Register</a>
-            <?php endif; ?>
         </div>
     </header>
     <main>
