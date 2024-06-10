@@ -77,27 +77,27 @@ session_start();
         <form id="loginForm">
         <div class="input-group">
             <label for="fullname">Full Name</label>
-            <input type="text" id="fullname" name="fullname">
+            <input type="text" id="fullname" placeholder="Enter Full Name" name="fullname">
         </div>
         <div class="input-group">
             <label for="username">Username</label>
-            <input type="text" id="username" name="username">
+            <input type="text" id="username" placeholder="Enter Username" name="username">
         </div>
         <div class="input-group">
             <label for="email">Email</label>
-            <input type="text" id="email" name="email">
+            <input type="text" id="email" placeholder="Enter Email" name="email">
         </div>
         <div class="input-group">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password">
+            <input type="password" id="password" placeholder="Enter Password" name="password">
         </div>
         <div class="input-group">
             <label for="rpassword">Repeat Password</label>
-            <input type="password" id="rpassword" name="rpassword">
+            <input type="password" id="rpassword" placeholder="Enter Password Again" name="rpassword">
         </div>
             <input type="submit" class="input-btn" value="Register" id="register" name="submit">
         </form>
-        <div><p>Already registered? <a href="login.php">Login here</a></p></div>
+        <div><p>Already registered? <a href="login.php" style="color: white;">Login here</a></p></div>
         </div>
     </main>
     <footer>

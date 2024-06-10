@@ -31,6 +31,7 @@ session_start();
             $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
             if ($user) {
                 if (password_verify($password, $user["password"])) {
+                    $_SESSION['username'] = $user['username'] ;
                     header("Location: index.php");
                     die();
                     
@@ -39,7 +40,7 @@ session_start();
                 }
 
                 } else {
-                    echo "<div class='alert alert-danger'>Username does not match</div>";
+                    echo "<div class='alert alert-danger'>Username does not exist</div>";
                 }
         } 
         ?>
@@ -55,7 +56,7 @@ session_start();
         </div>
             <input type="submit" class="input-btn" value="Login" name="login">
     </form>
-    <div><p>Not yet registered? <a href="register.php">Register here</a></p></div>
+    <div><p>Not yet registered? <a href="register.php" style="color: white;">Register here</a></p></div>
 </div>    
 </main>
      <footer>

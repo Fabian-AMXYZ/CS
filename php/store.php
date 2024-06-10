@@ -9,12 +9,14 @@ if (!isset($_SESSION['username'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Store - Digital Codex</title>
     <link rel="stylesheet" href="../css/styles.css">
 </head>
+
 <body>
     <header>
         <h1>Digital Codex</h1>
@@ -29,17 +31,16 @@ if (!isset($_SESSION['username'])) {
         <h2>Welcome to the Store</h2>
         <p>Browse through various game genres and find your next adventure!</p>
         <nav>
-            <ul>
-                <li><a href="games.php?genre=action">Action</a></li>
-                <li><a href="games.php?genre=adventure">Adventure</a></li>
-                <li><a href="games.php?genre=strategy">Strategy</a></li>
-                <li><a href="games.php?genre=horror">Horror</a></li>
-                <li><a href="games.php?genre=open+world">Open World</a></li>
-            </ul>
+            <a href="games.php?genre=action">Action</a>
+            <a href="games.php?genre=adventure">Adventure</a>
+            <a href="games.php?genre=strategy">Strategy</a>
+            <a href="games.php?genre=horror">Horror</a>
+            <a href="games.php?genre=open+world">Open World</a>
         </nav>
     </main>
     <footer>
         <p>&copy; 2024 Digital Codex. All rights reserved.</p>
     </footer>
 </body>
+
 </html>

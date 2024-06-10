@@ -47,15 +47,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <header>
         <h1>Digital Codex</h1>
         <div class="auth-links">
-            <a href="index.php">Homepage</a>
-            <a href="library.php">Library</a>
-            <?php if (isset($_SESSION['username'])): ?>
-                <span>Welcome, <?= htmlspecialchars($_SESSION['username']) ?>!</span>
-                <a href="logout.php">Logout</a>
-            <?php else: ?>
-                <a href="login.php">Login</a>
-                <a href="register.php">Register</a>
-            <?php endif; ?>
+        <?php require_once "database.php";
+            if (isset($_SESSION['username'])) {
+                $username = $_SESSION['username'];
+
+                echo "<span>Welcome, $username!</span>";
+                echo "<a href='index.php'>Homepage</a>";
+                echo "<a href='library.php'>Library</a>";
+                echo "<a href='logout.php'>Logout</a>";
+            } else {
+                echo "<a href='login.php'>Login</a>";
+                echo "<a href='register.php'>Register</a>";
+            }
+            ?>
         </div>
     </header>
     <main>

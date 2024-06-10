@@ -1,0 +1,256 @@
+html, body {
+    overflow: hidden;
+    height: 100%;
+}
+
+body {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('Images/background.jpg');
+
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.auth-links a {
+    color: #fff;
+    margin-left: 10px;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+.auth-links a:hover {
+    background-color: #555;
+}
+
+main {
+    padding: 20px;
+    padding: 20px;
+    max-height: calc(100vh - 150px); 
+    overflow-y: auto;
+}
+
+h1, h2, h3 {
+    color: #fff;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+#games {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.game {
+    background-color: #333;
+    border: 1px solid #444;
+    padding: 10px;
+    width: calc(33.333% - 20px);
+    text-align: center;
+    margin-bottom: 40px; 
+}
+
+
+.game img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.owned {
+    color: #a0a0a0;
+    font-weight: bold;
+}
+
+.login-container {
+    max-width: 400px;
+    margin: 0 auto; 
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container {
+    background: rgb(22, 22, 22);
+    border: 2px solid #444;
+    padding: 40px;
+    width: 320px;
+    box-shadow: 10px 10px 0 #444;
+    text-align: center;
+    margin: 100px auto; 
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .input-group {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+  }
+
+  input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #000;
+    box-shadow: 3px 3px 0 #000;
+    font-size: 14px;
+  }
+
+  .input-btn {
+    background-color: #ffcc00;
+    border: 2px solid #000;
+    padding: 12px;
+    width: 100%;
+    cursor: pointer;
+    box-shadow: 3px 3px 0 #000;
+    font-size: 16px;
+  }
+
+  .input-btn:hover {
+    background-color: #ffeb3b;
+  }
+
+  @media (max-width: 600px) {
+    .login-container {
+      width: 90%;
+      padding: 30px;
+    }
+  }
+
+
+.contact {
+    background-color: #444;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+}
+
+.button {
+    background-color: #444;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.button:hover {
+    background-color: #555;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    border: 1px solid #444;
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #555;
+}
+
+table td {
+    background-color: #333;
+}
+
+.slider {
+    width: 75%;
+    margin: -30px auto;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(23, 105, 41, 0.5);
+    position: relative;
+    height: 550px; /* 730px */ /* 550px */
+}
+
+.slides {
+    display: flex;
+    width: 500%; 
+    height: 100%;
+    animation: slide-animation 50s infinite;
+}
+
+.slide {
+    width: 20%;  
+    position: relative;
+    transition: 0.6s;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.slide h1 {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #45a049;
+    font-size: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+@keyframes slide-animation {
+    0%, 10% { transform: translateX(0); }  
+    20%, 30% { transform: translateX(-20%); } 
+    40%, 50% { transform: translateX(-40%); } 
+    60%, 70% { transform: translateX(-60%); } 
+    80%, 90% { transform: translateX(-80%); } 
+    100% { transform: translateX(0); } 
+}
