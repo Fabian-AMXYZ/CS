@@ -21,6 +21,7 @@ session_start();
                 $username = $_SESSION['username'];
 
                 echo "<span>Welcome, $username!</span>";
+                echo "<a href='games.php'>Browse games</a>";
                 echo "<a href='library.php'>Library</a>";
                 echo "<a href='cart.php'>Cart</a>";
                 echo "<a href='logout.php'>Logout</a>";
@@ -35,6 +36,7 @@ session_start();
         <h1>Welcome to Digital Codex</h1>
         <p>Browse through various game genres and find your next adventure!</p>
         <nav>
+            <a href="games.php">All Games</a>
             <a href="games.php?genre=action">Action</a>
             <a href="games.php?genre=adventure">Adventure</a>
             <a href="games.php?genre=strategy">Strategy</a>

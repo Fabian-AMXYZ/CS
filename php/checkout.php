@@ -6,32 +6,38 @@ if (!isset($_SESSION['username'])) {
     exit;
 }
 
-$cart = $_SESSION['cart'] ?? [];
-$total = array_sum(array_column($cart, 'price'));
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_SESSION['username'];
-    $users = json_decode(file_get_contents('users.json'), true);
+    // Validate and sanitize payment credentials
+    $paymentMethod = $_POST['payment_method'] ?? '';
+    $credentials = $_POST['credentials'] ?? '';
 
-    foreach ($users as &$user) {
-        if ($user['username'] === $username) {
-            if (!isset($user['library'])) {
-                $user['library'] = [];
-            }
+    // Perform additional validation if needed for payment credentials
 
-            foreach ($cart as $item) {
-                if (!in_array($item, $user['library'])) {
-                    $user['library'][] = $item;
-                }
-            }
-            break;
+    // Process checkout only if cart is not empty
+    if (!empty($_SESSION['cart'])) {
+        // Include database connection
+        require_once "database.php";
+
+        // Get logged-in user's ID
+        $userId = $_SESSION['username'];
+
+        // Insert purchase records into the database
+        $purchaseDate = date("Y-m-d H:i:s");
+        foreach ($_SESSION['cart'] as $item) {
+            $gameId = $item['game_id'];
+            $purchaseQuery = "INSERT INTO purchases (game_id, user_id, purchase_date) VALUES (?, ?, ?)";
+            $stmt = mysqli_prepare($conn, $purchaseQuery);
+            mysqli_stmt_bind_param($stmt, 'sss', $gameId, $userId, $purchaseDate);
+            mysqli_stmt_execute($stmt);
         }
-    }
 
-    file_put_contents('users.json', json_encode($users));
-    $_SESSION['cart'] = [];
-    header('Location: library.php');
-    exit;
+        // Clear the cart after successful purchase
+        $_SESSION['cart'] = [];
+
+        // Redirect to the library page after purchase
+        header('Location: library.php');
+        exit;
+    }
 }
 ?>
 
@@ -47,12 +53,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <header>
         <h1>Digital Codex</h1>
         <div class="auth-links">
-        <?php require_once "database.php";
+            <?php
             if (isset($_SESSION['username'])) {
                 $username = $_SESSION['username'];
 
                 echo "<span>Welcome, $username!</span>";
                 echo "<a href='index.php'>Homepage</a>";
+                echo "<a href='games.php'>Browse games</a>";
                 echo "<a href='library.php'>Library</a>";
                 echo "<a href='logout.php'>Logout</a>";
             } else {
@@ -63,24 +70,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </header>
     <main>
-    <div class="login-container">
-        <h2>Checkout</h2>
-        <form action="checkout.php" method="post">
-        <form id="loginForm">
-        <div class="input-group">
-            <label for="payment-method">Payment Method</label>
-            <select id="payment-method" name="payment_method" required>
-            </div>
-                <option value="credit_card">Credit Card</option>
-                <option value="paypal">PayPal</option>
-                <option value="bank_transfer">Bank Transfer</option>
-            </select>
-            <div class="input-group">
-            <label for="credentials">Payment Credentials</label>
-            <input type="text" id="credentials" name="credentials" required>
-            </div>
-            <button type="submit">Confirm Purchase</button>
-        </form>
+        <div class="login-container">
+            <h2>Checkout</h2>
+            <form action="checkout.php" method="post">
+                <div class="input-group">
+                    <label for="payment-method">Payment Method</label>
+                    <select id="payment-method" name="payment_method" required>
+                        <option value="credit_card">Credit Card</option>
+                        <option value="paypal">PayPal</option>
+                        <option value="bank_transfer">Bank Transfer</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="credentials">Payment Credentials</label>
+                    <input type="text" id="credentials" name="credentials" required>
+                </div>
+                <button type="submit">Confirm Purchase</button>
+            </form>
+        </div>
     </main>
     <footer>
         <p>&copy; 2024 Digital Codex. All rights reserved.</p>
