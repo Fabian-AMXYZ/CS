@@ -78,6 +78,7 @@ $total = array_sum(array_column($cart, 'price'));
                 echo "<a href='index.php'>Homepage</a>";
                 echo "<a href='games.php'>Browse games</a>";
                 echo "<a href='library.php'>Library</a>";
+                echo "<a href='edit_profile.php'>Edit Profile</a>";
                 echo "<a href='logout.php'>Logout</a>";
             } else {
                 echo "<a href='login.php'>Login</a>";

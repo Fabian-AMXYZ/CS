@@ -60,6 +60,7 @@ $purchased_games = mysqli_fetch_all($purchasedGamesResult, MYSQLI_ASSOC);
             <a href='index.php'>Homepage</a>
             <a href='library.php'>Library</a>
             <a href='cart.php'>Cart</a>
+            <a href='edit_profile.php'>Edit Profile</a>
             <a href='logout.php'>Logout</a>
         </div>
     </header>

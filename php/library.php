@@ -40,6 +40,7 @@ $library = mysqli_fetch_all($result, MYSQLI_ASSOC);
             echo "<a href='index.php'>Homepage</a>";
             echo "<a href='games.php'>Browse games</a>";
             echo "<a href='cart.php'>Cart</a>";
+            echo "<a href='edit_profile.php'>Edit Profile</a>";
             echo "<a href='logout.php'>Logout</a>";
             ?>
         </div>

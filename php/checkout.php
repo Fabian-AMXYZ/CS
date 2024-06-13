@@ -61,6 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo "<a href='index.php'>Homepage</a>";
                 echo "<a href='games.php'>Browse games</a>";
                 echo "<a href='library.php'>Library</a>";
+                echo "<a href='edit_profile.php'>Edit Profile</a>";
                 echo "<a href='logout.php'>Logout</a>";
             } else {
                 echo "<a href='login.php'>Login</a>";
@@ -83,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <div class="input-group">
                     <label for="credentials">Payment Credentials</label>
-                    <input type="text" id="credentials" name="credentials" required>
+                    <input type="number" id="credentials" name="credentials" required>
                 </div>
                 <button type="submit">Confirm Purchase</button>
             </form>
