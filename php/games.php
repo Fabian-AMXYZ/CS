@@ -68,9 +68,9 @@ $purchased_games = mysqli_fetch_all($purchasedGamesResult, MYSQLI_ASSOC);
         <!-- Display categories -->
         <nav>
             <section id="genres">
-                <a href="games.php">All Games</a>
+                <a href="games.php" class="genre-link">All Games</a>
                 <?php foreach ($categories as $category) : ?>
-                    <a href="games.php?genre=<?= urlencode($category['genre']) ?>"><?= ucfirst($category['genre']) ?></a>
+                    <a href="games.php?genre=<?= urlencode($category['genre']) ?>" class="genre-link"><?= ucfirst($category['genre']) ?></a>
                 <?php endforeach; ?>
             </section>
         </nav>

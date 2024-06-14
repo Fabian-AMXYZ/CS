@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 12, 2024 at 08:53 PM
+-- Generation Time: Jun 14, 2024 at 08:23 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -67,7 +67,7 @@ INSERT INTO `games` (`id`, `category_id`, `title`, `description`, `price`, `imag
 (2, 1, 'Tom Clancy\'s Rainbow Six® Siege', 'A tactical shooter game focusing on teamwork and strategy.', 19.99, '/CS/img/action/rainbow.jpg'),
 (3, 1, 'Red Dead Redemption 2', 'An epic tale of life in America at the dawn of the modern age.', 39.99, '/CS/img/action/rdr2.jpg'),
 (4, 2, 'Terraria', 'An adventure game featuring exploration, crafting, building, and combat.', 9.99, '/CS/img/adventure/teraaa.jpg'),
-(5, 2, 'Baldur\'s Gate 3', 'A next-generation RPG, set in the world of Dungeons and Dragons.', 29.99, '/CS/img/adventure/bg33.jpg'),
+(5, 2, 'Baldur\'s Gate 3', 'A next-generation RPG, set in the world of Dungeons and Dragons.', 29.99, '/CS/img/adventure/baldur.jpg'),
 (6, 2, 'The Forest', 'A survival horror game set in an open world forest environment.', 14.99, '/CS/img/adventure/forest.jpg'),
 (7, 3, 'Persona 3 Reload', 'A modern remaster of the beloved RPG classic with enhanced graphics and gameplay.', 49.99, '/CS/img/strategy/persona3.jpg'),
 (8, 3, 'Civilization VI', 'Sid Meier\'s Civilization VI is a turn-based strategy 4X video game developed by Firaxis Games and published by 2K. The mobile and Nintendo Switch port was published by Aspyr Media.', 29.99, '/CS/img/strategy/civi.jpg'),
@@ -92,6 +92,14 @@ CREATE TABLE `purchases` (
   `purchase_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `purchases`
+--
+
+INSERT INTO `purchases` (`id`, `user_id`, `game_id`, `purchase_date`) VALUES
+(153, 'Jello', 1, '2024-06-12 12:59:52'),
+(154, 'Jello', 10, '2024-06-13 01:14:51');
+
 -- --------------------------------------------------------
 
 --
@@ -103,16 +111,16 @@ CREATE TABLE `users` (
   `full_name` varchar(128) NOT NULL,
   `username` varchar(25) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `is_admin` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `full_name`, `username`, `email`, `password`) VALUES
-(1, 'Angelo Fabian', 'Jello', 'angelofabian@gmail.com', '$2y$10$mziLM06EbCTb3VCPvvK3KumacmeYApWcoAbZqjzLbQ.tHb35dwKmC'),
-(3, 'Brent Rull', 'BrentPogi', 'brentrull@gmail.com', '$2y$10$OK4s7gBThj.vOwTLefbcc.NX6DesLyIeIpBVJbZcrkRjFTeT4Ze42');
+INSERT INTO `users` (`id`, `full_name`, `username`, `email`, `password`, `is_admin`) VALUES
+(1, 'Angelo Fabian', 'Jello', 'angelofabian@gmail.com', '$2y$10$.XUolQ5zZijjikf5bSH3ZefYVA0CrjmjiwqW.u0tnTcJJcsFxbieG', 1);
 
 --
 -- Indexes for dumped tables
@@ -165,13 +173,13 @@ ALTER TABLE `games`
 -- AUTO_INCREMENT for table `purchases`
 --
 ALTER TABLE `purchases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=153;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=157;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

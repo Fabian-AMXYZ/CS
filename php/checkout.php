@@ -43,12 +43,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout - Digital Codex</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <header>
         <h1>Digital Codex</h1>
@@ -94,4 +96,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p>&copy; 2024 Digital Codex. All rights reserved.</p>
     </footer>
 </body>
+
 </html>

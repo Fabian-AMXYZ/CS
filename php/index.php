@@ -35,7 +35,9 @@ session_start();
     </header>
     <main>
         <h1>Welcome to Digital Codex</h1>
-        <p>Browse through various game genres and find your next adventure!</p>
+        <div class="hero-section">
+            <p class="hero-text">Browse through various game genres and find your next adventure!</p>
+        </div>
         <nav>
             <a href="games.php">All Games</a>
             <a href="games.php?genre=action">Action</a>
@@ -43,7 +45,11 @@ session_start();
             <a href="games.php?genre=strategy">Strategy</a>
             <a href="games.php?genre=horror">Horror</a>
             <a href="games.php?genre=open+world">Open World</a>
-        </nav>
+        </nav><br>
+        <br>
+        <div class="for_slide">
+
+        </div>
         <h2>Featured Games:</h2>
     </main>
 

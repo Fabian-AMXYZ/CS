@@ -25,12 +25,14 @@ $library = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library - Digital Codex</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <header>
         <h1>Digital Codex</h1>
@@ -68,4 +70,5 @@ $library = mysqli_fetch_all($result, MYSQLI_ASSOC);
         <p>&copy; 2024 Digital Codex. All rights reserved.</p>
     </footer>
 </body>
+
 </html>

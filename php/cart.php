@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!$alreadyInCart) {
         $_SESSION['cart'][] = ['game_id' => $game_id, 'title' => $title, 'price' => $price];
     }
-    
+
     // Remove item from cart if remove button is clicked
     if (isset($_POST['remove_item'])) {
         $game_id = $_POST['game_id'];
@@ -115,8 +115,11 @@ $total = array_sum(array_column($cart, 'price'));
                     <td></td> <!-- Empty column for alignment -->
                 </tr>
             </table>
-            <a href="games.php" class="button">Go back</a>
-            <a href="checkout.php" class="button">Proceed to Checkout</a>
+            <div class="button-container">
+                <a href="checkout.php" class="button">Proceed to Checkout</a>
+                <a href="games.php" class="button">Go back</a>
+            </div>
+
         <?php else : ?>
             <p>Your cart is empty.</p>
         <?php endif; ?>
